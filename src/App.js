@@ -76,9 +76,21 @@ function App() {
         normalizedLetter,
       ]);
     }
+    setGuesses((actualGuesses) => actualGuesses -1 )
   };
+  useEffect(() =>{
+    if (guesses <= 0) {
+      //Reset all states
+      setGuessedLetters([])
+      setWrongLetters([])
+      setGameStage(stages[2].name)
+      
+    }
+  },[guesses] )
 
   const retry = () => {
+    setScore(0)
+    setGuesses(3)
     setGameStage(stages[0].name);
   };
 
